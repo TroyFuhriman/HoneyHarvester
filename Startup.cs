@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using honey_harvest.Repositories;
 using honey_harvest.Services;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -61,6 +62,7 @@ namespace honey_harvest
 
       //NOTE REGISTER SERVICES AND REPOSITORIES
       services.AddTransient<ProfilesService>();
+      services.AddTransient<ProfilesRepository>();
     }
 
     private IDbConnection CreateDbConnection()
