@@ -17,14 +17,14 @@ namespace honey_harvest.Services
       return _repo.Get();
     }
 
-    internal Profile Get(int id, string email)
+    public Profile Get(int id, string userId)
     {
       Profile foundProfile = Get(id);
       if (foundProfile == null)
       {
         throw new Exception("Invalid Id");
       }
-      if (foundProfile.Email == email)
+      if (foundProfile.UserId == userId)
       {
         return foundProfile;
       }
@@ -41,35 +41,35 @@ namespace honey_harvest.Services
       return foundProfile;
     }
 
-    internal Profile Create(Profile newProfile)
+    public Profile Create(Profile newProfile)
     {
       return _repo.Create(newProfile);
     }
 
-    internal Profile Edit(Profile profileToUpdate)
+    public Profile Edit(Profile profileToUpdate)
     {
       Profile original = Get(profileToUpdate.Id);
-      if (profileToUpdate.Email == original.Email)
+      if (profileToUpdate.UserId == original.UserId)
       {
         original.AutoUpgrades = profileToUpdate.AutoUpgrades > 0 ? profileToUpdate.AutoUpgrades : original.AutoUpgrades;
         original.ClickUpgrades = profileToUpdate.ClickUpgrades > 0 ? profileToUpdate.ClickUpgrades : original.ClickUpgrades;
-        original.Email = profileToUpdate.Email.Length > 0 ? profileToUpdate.Email : original.Email;
+        original.UserId = profileToUpdate.UserId.Length > 0 ? profileToUpdate.UserId : original.UserId;
         original.Name = profileToUpdate.Name.Length > 0 ? profileToUpdate.Name : original.Name;
-        original.Picture = profileToUpdate.Picture.Length > 0 ? profileToUpdate.Picture : original.Picture;
+        // original.Picture = profileToUpdate.Picture.Length > 0 ? profileToUpdate.Picture : original.Picture;
         original.Score = profileToUpdate.Score > 0 ? profileToUpdate.Score : original.Score;
         return _repo.Edit(original);
       }
       throw new Exception("This is not your Profile");
     }
 
-    internal string Delete(int id, string email)
+    public string Delete(int id, string userId)
     {
       Profile foundProfile = Get(id);
-      if (foundProfile.Email != email)
+      if (foundProfile.UserId != userId)
       {
         throw new Exception("This is not your Profile!");
       }
-      if (_repo.Delete(id, email))
+      if (_repo.Delete(id, userId))
       {
         return "Successfully Deleted";
       }

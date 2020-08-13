@@ -36,13 +36,13 @@ namespace honey_harvest.Controllers
     {
       try
       {
-        string email = "";
+        string userId = "";
         var claim = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier);
         if (claim != null)
         {
-          email = claim.Value;
+          userId = claim.Value;
         }
-        return Ok(_ps.Get(id, email));
+        return Ok(_ps.Get(id, userId));
       }
       catch (Exception e)
       {
@@ -55,8 +55,8 @@ namespace honey_harvest.Controllers
     {
       try
       {
-        var email = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-        newProfile.Email = email;
+        var userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+        newProfile.UserId = userId;
         return Ok(_ps.Create(newProfile));
       }
       catch (Exception e)
@@ -70,8 +70,8 @@ namespace honey_harvest.Controllers
     {
       try
       {
-        string email = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-        profileToUpdate.Email = email;
+        string userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+        profileToUpdate.UserId = userId;
         profileToUpdate.Id = id;
         return Ok(_ps.Edit(profileToUpdate));
       }
@@ -86,8 +86,8 @@ namespace honey_harvest.Controllers
     {
       try
       {
-        string email = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
-        return Ok(_ps.Delete(id, email));
+        string userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+        return Ok(_ps.Delete(id, userId));
       }
       catch (Exception e)
       {

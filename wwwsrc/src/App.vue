@@ -13,10 +13,11 @@ export default {
   async beforeCreate() {
     await onAuth();
     this.$store.dispatch("setBearer", this.$auth.bearer);
+    this.$store.dispatch("getProfiles");
   },
   components: {
-    Navbar
-  }
+    Navbar,
+  },
 };
 </script>
 

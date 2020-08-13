@@ -2,30 +2,38 @@ import Vue from "vue";
 import Vuex from "vuex";
 import Axios from "axios";
 import router from "../router";
+import { api } from "./AxiosService";
 
 Vue.use(Vuex);
-
-let baseUrl = location.host.includes("localhost")
-  ? "https://localhost:5001/"
-  : "/";
-
-let api = Axios.create({
-  baseURL: baseUrl + "api/",
-  timeout: 3000,
-  withCredentials: true
-});
-
 export default new Vuex.Store({
   state: {
-    publicKeeps: []
+    profiles: [],
+    activeProfile: {},
   },
-  mutations: {},
-  actions: {
-    setBearer({}, bearer) {
-      api.defaults.headers.authorization = bearer;
+  mutations: {
+    setProfiles(state, profiles) {
+      state.profiles = profiles;
     },
-    resetBearer() {
-      api.defaults.headers.authorization = "";
-    }
-  }
+    setActiveProfile(state, profile) {
+      state.activeProfile = profile;
+    },
+  },
+  actions: {
+    async getProfiles({ commit, dispatch }) {
+      try {
+        let res = await api.get("profiles");
+        commit("setProfiles", res.data);
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    async getProfile({ commit, dispatch }, profileId) {
+      try {
+        let res = await api.get("profiles/" + profileId);
+        commit("setActiveProfile", res.data);
+      } catch (error) {
+        console.error(error);
+      }
+    },
+  },
 });
