@@ -31,7 +31,7 @@ namespace honey_harvest.Services
       throw new Exception("you broke it");
     }
 
-    private Profile Get(int id)
+    public Profile Get(int id)
     {
       Profile foundProfile = _repo.GetById(id);
       if (foundProfile == null)

@@ -36,13 +36,13 @@ namespace honey_harvest.Controllers
     {
       try
       {
-        string userId = "";
-        var claim = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier);
-        if (claim != null)
-        {
-          userId = claim.Value;
-        }
-        return Ok(_ps.Get(id, userId));
+        // string userId = "";
+        // var claim = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier);
+        // if (claim != null)
+        // {
+        //   userId = claim.Value;
+        // }
+        return Ok(_ps.Get(id));
       }
       catch (Exception e)
       {

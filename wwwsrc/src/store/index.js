@@ -29,8 +29,17 @@ export default new Vuex.Store({
     },
     async getProfile({ commit, dispatch }, profileId) {
       try {
-        let res = await api.get("profiles/" + profileId);
+        let id = profileId.toString();
+        let res = await api.get("profiles/" + id);
         commit("setActiveProfile", res.data);
+      } catch (error) {
+        console.error(error);
+      }
+    },
+    async createProfile({ commit, dispatch }, profile) {
+      try {
+        let res = await api.post("profiles", profile);
+        dispatch("getProfile", res.data.id);
       } catch (error) {
         console.error(error);
       }
