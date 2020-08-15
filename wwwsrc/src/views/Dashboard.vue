@@ -40,7 +40,7 @@ export default {
           }
         }
         // this.$store.dispatch("createProfile", this.newProfile);
-        // return console.log("you don't have a profile yet!");
+        return console.log("you don't have a profile yet!");
       }
       return console.log("Please sign in");
     },
