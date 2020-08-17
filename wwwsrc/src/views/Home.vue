@@ -2,8 +2,8 @@
   <div class="home">
     <h1>Welcome Home</h1>Let's play a fun game
   </div>
+  <!-- I'm not sure how exactly I want to do the profile and the game start. I think it should be a one page type of thing, but it might be easier to do two page... -->
 </template>
-
 <script>
 export default {
   data() {
