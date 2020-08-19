@@ -25,7 +25,12 @@ namespace honey_harvest.Repositories
       SELECT * FROM profiles WHERE id = @id;";
       return _db.QueryFirstOrDefault<Profile>(sql, new { id });
     }
-
+    internal Profile getByUserId(string userId)
+    {
+      string sql = @"
+      SELECT * FROM profiles WHERE userId = @userId";
+      return _db.QueryFirstOrDefault<Profile>(sql, new { userId });
+    }
     internal Profile Create(Profile newProfile)
     {
       string sql = @"

@@ -31,6 +31,19 @@ namespace honey_harvest.Controllers
         return BadRequest(e.Message);
       }
     }
+    [HttpGet("myProfile")]
+    public ActionResult<Profile> getByUserId()
+    {
+      try
+      {
+        string userId = HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+        return Ok(_ps.Get(userId));
+      }
+      catch (Exception e)
+      {
+        return BadRequest(e.Message);
+      }
+    }
     [HttpGet("{id}")]
     public ActionResult<Profile> GetById(int id)
     {

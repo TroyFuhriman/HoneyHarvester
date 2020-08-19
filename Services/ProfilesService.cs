@@ -40,11 +40,22 @@ namespace honey_harvest.Services
       }
       return foundProfile;
     }
+    public Profile Get(string userId)
+    {
+      Profile foundProfile = _repo.getByUserId(userId);
+      if (foundProfile == null)
+      {
+        throw new Exception("not passing userId correct");
+      }
+      return foundProfile;
+    }
+
 
     public Profile Create(Profile newProfile)
     {
       return _repo.Create(newProfile);
     }
+
 
     public Profile Edit(Profile profileToUpdate)
     {

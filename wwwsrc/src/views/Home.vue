@@ -14,7 +14,10 @@ export default {
     };
   },
   name: "home",
-  mounted() {},
+  mounted() {
+    this.$store.dispatch("getProfiles");
+    // this.findProfile;
+  },
   computed: {
     profiles() {
       return this.$store.state.profiles;
@@ -22,20 +25,20 @@ export default {
     profile() {
       return this.$store.state.activeProfile;
     },
-    findProfile() {
-      let profileId = 0;
-      for (let i = 0; i < this.profiles.length; i++) {
-        let profile = this.profiles[i];
-        if (profile.userId == this.$auth.user.sub) {
-          profileId = profile.id;
-          this.$store.dispatch("getProfile", profileId);
-          return console.log("welcome back");
-        }
-      }
-      // this.$store.dispatch("createProfile", this.newProfile);
-      return console.log("you don't have a profile yet!");
-      return console.log("Please sign in");
-    },
+    // findProfile() {
+    //   let profileId = 0;
+    //   for (let i = 0; i < this.profiles.length; i++) {
+    //     let profile = this.profiles[i];
+    //     if (profile.userId == this.$auth.user.sub) {
+    //       profileId = profile.id;
+    //       this.$store.dispatch("getProfile", profileId);
+    //       return console.log("welcome back");
+    //     }
+    //   }
+    //   // this.$store.dispatch("createProfile", this.newProfile);
+    //   return console.log("you don't have a profile yet!");
+    //   return console.log("Please sign in");
+    // },
   },
   methods: {
     logout() {
