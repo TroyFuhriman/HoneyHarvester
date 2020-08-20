@@ -12,7 +12,6 @@ export const api = Axios.create({
 
 export const setBearer = function(bearer) {
   api.defaults.headers.authorization = bearer;
-  console.log(bearer);
 };
 
 export const resetBearer = function() {

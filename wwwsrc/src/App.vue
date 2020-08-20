@@ -15,6 +15,7 @@ export default {
     await onAuth();
     // this.$store.dispatch("setBearer", this.$auth.bearer);
     setBearer(this.$auth.bearer);
+    this.$store.dispatch("getProfile");
   },
   components: {
     Navbar,
@@ -23,7 +24,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "./assets/_variables.scss";
 @import "bootstrap";
-@import "./assets/_overrides.scss";
+@import "./assets/flatly.scss";
+// @import "./assets/_overrides.scss";
 </style>

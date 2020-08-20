@@ -19,6 +19,13 @@ export default new Vuex.Store({
     },
   },
   actions: {
+    async editProfile({ commit, dispatch }, profile) {
+      await api.put("profiles/" + profile.id, profile);
+    },
+    async editProfileName({ commit, dispatch }, profile) {
+      await api.put("profiles/" + profile.id, profile);
+      dispatch("getProfiles");
+    },
     async getProfiles({ commit, dispatch }) {
       try {
         let res = await api.get("profiles");

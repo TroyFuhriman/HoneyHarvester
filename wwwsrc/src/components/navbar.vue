@@ -1,6 +1,11 @@
 <template>
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <router-link class="navbar-brand" :to="{ name: 'home' }">Honey Harvest</router-link>
+    <router-link
+      class="navbar-brand"
+      data-toggle="collapse"
+      data-target=".navbar-collapse.show"
+      :to="{ name: 'home' }"
+    >Honey Harvest</router-link>
     <button
       class="navbar-toggler"
       type="button"
@@ -13,7 +18,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
-      <ul class="navbar-nav mr-auto">
+      <!-- <ul class="navbar-nav mr-auto">
         <li class="nav-item" :class="{ active: $route.name == 'home' }">
           <router-link :to="{ name: 'home' }" class="nav-link">Home</router-link>
         </li>
@@ -24,8 +29,8 @@
         >
           <router-link class="nav-link" :to="{ name: 'dashboard' }">My-Dashboard</router-link>
         </li>
-      </ul>
-      <span class="navbar-text">
+      </ul>-->
+      <span class="navbar-text ml-auto">
         <button class="btn btn-success" @click="login" v-if="!$auth.isAuthenticated">Login</button>
         <button class="btn btn-danger" @click="logout" v-else>logout</button>
       </span>
