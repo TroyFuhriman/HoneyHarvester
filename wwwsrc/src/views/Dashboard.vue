@@ -5,8 +5,8 @@
       <img
         @click="addHoneyOnClick"
         type="button"
-        class="img-fluid rounded-circle col-9 col-md-3"
-        src="../assets/honey.jpg"
+        class="drag img-fluid rounded-circle col-6 col-md-2"
+        src="../assets/beehive.jpg"
         alt
       />
     </div>
@@ -23,27 +23,56 @@
       </div>
     </div>
     <div class="row">
-      <div class="col-12 col-md-3">hello</div>
-      <div class="col-12 col-md-3">hello</div>
-      <div class="col-12 col-md-3">hello</div>
-      <div class="col-12 col-md-3">hello</div>
+      <tools v-for="tool in tools" :key="tool.id" :tool="tool">{{tool.name}}</tools>
     </div>
   </div>
 </template>
 
 <script>
+import tools from "@/components/tools";
 export default {
   data() {
     return {
       newProfile: {
         name: this.$auth.user.nickname,
       },
+      tools: [
+        {
+          id: 1,
+          name: "Honey Scraper",
+          price: 5,
+          description: "Increases Collection by 1",
+          img: "/img/beehive.d70ff85c.jpg",
+        },
+        {
+          id: 2,
+          name: "New Hive",
+          price: 5,
+          description: "Increases Collection by 5",
+          img: "../assets/hive.jpg",
+        },
+        {
+          id: 3,
+          name: "Hire Beekeeper",
+          price: 5,
+          description: "Automated Collection",
+          img: "../assets/beekeeper.jpg",
+        },
+        {
+          id: 4,
+          name: "Robots!",
+          price: 5,
+          description: "Super Automated Collection",
+          img: "../assets/robot.jpg",
+        },
+      ],
     };
   },
   name: "dashboard",
   mounted() {
     this.$store.dispatch("getProfile");
     this.startInterval;
+    this.tools[0].img = "../assets/hive.jpg";
   },
   computed: {
     profiles() {
@@ -75,10 +104,17 @@ export default {
       this.$store.dispatch("editProfile", this.profile);
     },
   },
+  components: {
+    tools,
+  },
 };
 </script>
 <style scoped>
-.size {
-  max-height: 30vh;
+.drag {
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 </style>

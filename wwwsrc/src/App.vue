@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div class="bg-image bg-primary" id="app">
     <navbar />
     <router-view />
   </div>
@@ -27,4 +27,14 @@ export default {
 @import "bootstrap";
 @import "./assets/flatly.scss";
 // @import "./assets/_overrides.scss";
+</style>
+<style >
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+.bg-image {
+  background-image: url(./assets/honeycomb.png);
+}
 </style>
