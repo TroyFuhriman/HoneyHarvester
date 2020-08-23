@@ -1,6 +1,6 @@
 <template>
   <div class="dashboard container-fluid">
-    <h1 class="text-center">Welcome {{profile.name}}</h1>
+    <h1 class="text-center">Welcome {{profile.name}} to Honey Harvest!</h1>
     <div class="row justify-content-center">
       <img
         @click="addHoneyOnClick"
