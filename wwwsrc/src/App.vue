@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-image bg-primary" id="app">
+  <div class="bg-image bg-secondary" id="app">
     <navbar />
     <router-view />
   </div>

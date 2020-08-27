@@ -1,12 +1,19 @@
 <template>
-  <div class="tool col-md-3 col-12">
-    <div class="row">
-      <div class="col-md-12 col-6">
-        <img class="img-fluid" :src="tool.img" alt />
-      </div>
+  <div class="tool col-md-3 col-6 mb-4">
+    <img
+      @click="tool.count++"
+      @mouseenter="hovered = true"
+      @mouseout="hovered = false"
+      class="img-fluid shadow rounded-top"
+      :src="tool.img"
+    />
+    <div
+      class="border border-dark shadow rounded-bottom bg-white opacity text-center"
+      v-if="hovered"
+    >
+      <h5>{{tool.name}} | {{tool.price}} honey | amount: {{tool.count}}</h5>
+      <p>{{tool.description}}</p>
     </div>
-    <h5>{{tool.name}}</h5>
-    <p>{{tool.description}}</p>
   </div>
 </template>
 
@@ -15,7 +22,9 @@
 export default {
   name: "tool",
   data() {
-    return {};
+    return {
+      hovered: false,
+    };
   },
   computed: {},
   methods: {},
@@ -26,4 +35,10 @@ export default {
 
 
 <style scoped>
+.size {
+  max-width: 100% !important ;
+}
+.opacity {
+  opacity: 0.8;
+}
 </style>

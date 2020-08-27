@@ -38,32 +38,36 @@ export default {
       },
       tools: [
         {
-          id: 1,
+          id: 0,
           name: "Honey Scraper",
           price: 5,
           description: "Increases Collection by 1",
-          img: "/img/beehive.d70ff85c.jpg",
+          img: require("../assets/scraper.jpg"),
+          count: 0,
         },
         {
           id: 2,
           name: "New Hive",
           price: 5,
           description: "Increases Collection by 5",
-          img: "../assets/hive.jpg",
+          img: require("../assets/hive2.jpg"),
+          count: 0,
         },
         {
           id: 3,
           name: "Hire Beekeeper",
           price: 5,
           description: "Automated Collection",
-          img: "../assets/beekeeper.jpg",
+          img: require("../assets/beekeeper.jpg"),
+          count: 0,
         },
         {
           id: 4,
           name: "Robots!",
           price: 5,
           description: "Super Automated Collection",
-          img: "../assets/robot.jpg",
+          img: require("../assets/robot.jpg"),
+          count: 0,
         },
       ],
     };
@@ -72,7 +76,6 @@ export default {
   mounted() {
     this.$store.dispatch("getProfile");
     this.startInterval;
-    this.tools[0].img = "../assets/hive.jpg";
   },
   computed: {
     profiles() {
@@ -103,6 +106,7 @@ export default {
       this.profile.autoUpgrades++;
       this.$store.dispatch("editProfile", this.profile);
     },
+    scraper() {},
   },
   components: {
     tools,
