@@ -1,7 +1,7 @@
 <template>
   <div class="tool col-md-3 col-6 mb-4">
     <img
-      @click="tool.count++"
+      @click="addTool"
       @mouseenter="hovered = true"
       @mouseout="hovered = false"
       class="img-fluid shadow rounded-top"
@@ -26,8 +26,17 @@ export default {
       hovered: false,
     };
   },
-  computed: {},
-  methods: {},
+  computed: {
+    profile() {
+      return this.$store.state.activeProfile;
+    },
+  },
+  methods: {
+    addTool() {
+      this.tool.count++;
+      this.profile.score -= this.tool.price;
+    },
+  },
   components: {},
   props: ["tool"],
 };
