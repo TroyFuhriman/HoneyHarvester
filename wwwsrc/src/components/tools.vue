@@ -30,13 +30,17 @@ export default {
     profile() {
       return this.$store.state.activeProfile;
     },
-  },
-  methods: {
     addTool() {
       this.tool.count++;
       this.profile.score -= this.tool.price;
+      if (this.tool.click) {
+        this.profile.clickUpgrade += this.tool.upgrade;
+      } else {
+        this.profile.autoUpgrade += this.tool.upgrade;
+      }
     },
   },
+  methods: {},
   components: {},
   props: ["tool"],
 };
